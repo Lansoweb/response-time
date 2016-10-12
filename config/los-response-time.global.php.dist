@@ -13,8 +13,11 @@ return [
     ],
 
     'middleware_pipeline' => [
-        'pre_routing' => [
-            [ 'middleware' => LosMiddleware\ResponseTime\ResponseTime::class ],
+        'pre' => [
+            'middleware' => [
+                [ 'middleware' => LosMiddleware\ResponseTime\ResponseTime::class ],
+            ],
+            'priority' => 10001,
         ],
     ],
 
