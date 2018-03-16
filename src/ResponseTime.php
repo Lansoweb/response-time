@@ -1,10 +1,12 @@
 <?php
 namespace LosMiddleware\ResponseTime;
 
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-final class ResponseTime
+final class ResponseTime implements MiddlewareInterface
 {
 
     const HEADER_NAME = 'X-Response-Time';
@@ -15,6 +17,10 @@ final class ResponseTime
      */
     private $options;
 
+    /**
+     * ResponseTime constructor.
+     * @param array $options
+     */
     public function __construct($options = [])
     {
         $this->options = array_merge([
@@ -23,13 +29,11 @@ final class ResponseTime
     }
 
     /**
-     * Runs the middleware
-     *
-     * @param RequestInterface $request
-     * @param ResponseInterface $response
-     * @param callable $next
+     * @param ServerRequestInterface $request
+     * @param RequestHandlerInterface $handler
+     * @return ResponseInterface
      */
-    public function __invoke(RequestInterface $request, ResponseInterface $response, callable $next)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $server = $request->getServerParams();
 
@@ -37,7 +41,7 @@ final class ResponseTime
             $server['REQUEST_TIME_FLOAT'] = microtime(true);
         }
 
-        $response = $next($request, $response);
+        $response = $handler->handle($request);
 
         $time = (microtime(true) - $server['REQUEST_TIME_FLOAT']) * 1000;
 

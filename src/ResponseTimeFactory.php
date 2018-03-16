@@ -2,7 +2,7 @@
 
 namespace LosMiddleware\ResponseTime;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 class ResponseTimeFactory
 {
@@ -11,13 +11,13 @@ class ResponseTimeFactory
      *
      * @param ContainerInterface $container
      * @return \LosMiddleware\ResponseTime\ResponseTime
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container)
     {
         $config = $container->get('config');
-        $options = array_key_exists('los_response_time', $config) && !empty($config['los_response_time'])
-            ? $config['los_response_time']
-            : [];
+        $options = $config['los_response_time'] ?? [];
 
         return new ResponseTime($options);
     }

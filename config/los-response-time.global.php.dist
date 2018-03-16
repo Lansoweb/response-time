@@ -1,24 +1,11 @@
 <?php
-
 return [
-
     'los_response_time' => [
         'header_name' => LosMiddleware\ResponseTime\ResponseTime::HEADER_NAME,
     ],
-
     'dependencies' => [
         'factories' => [
             LosMiddleware\ResponseTime\ResponseTime::class => LosMiddleware\ResponseTime\ResponseTimeFactory::class,
         ],
     ],
-
-    'middleware_pipeline' => [
-        'pre' => [
-            'middleware' => [
-                [ 'middleware' => LosMiddleware\ResponseTime\ResponseTime::class ],
-            ],
-            'priority' => 10001,
-        ],
-    ],
-
 ];

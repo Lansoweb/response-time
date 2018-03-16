@@ -1,25 +1,46 @@
 {
-  "name" : "los/response-time",
-  "description" : "PHP middleware to add a Response Time header",
-  "require" : {
-    "php" : "^7.0",
-    "psr/http-message" : "^1.0"
-  },
-  "license" : "MIT",
-  "autoload-dev" : {
-    "psr-4" : {
-      "LosMiddleware\\ResponseTimeTest\\" : "test/"
+    "name" : "los/response-time",
+    "description" : "PHP middleware to add a Response Time header",
+    "require" : {
+        "php" : "^7.0",
+        "psr/http-message" : "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "psr/container": "^1.0"
+    },
+    "license" : "MIT",
+    "autoload-dev" : {
+        "psr-4" : {
+            "LosMiddleware\\ResponseTimeTest\\" : "test/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    },
+    "autoload" : {
+        "psr-4" : {
+            "LosMiddleware\\ResponseTime\\" : "src/"
+        }
+    },
+    "type" : "library",
+    "homepage" : "https://github.com/lansoweb/response-time",
+    "authors" : [ {
+        "name" : "Leandro Silva",
+        "homepage" : "http://leandrosilva.info/"
+    } ],
+    "require-dev": {
+        "zendframework/zend-coding-standard": "^1.0",
+        "squizlabs/php_codesniffer": "^2.7",
+        "phpstan/phpstan": "^0.9.2"
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@phpstan"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "phpstan": "phpstan analyse -l 4 src"
     }
-  },
-  "autoload" : {
-    "psr-4" : {
-      "LosMiddleware\\ResponseTime\\" : "src/"
-    }
-  },
-  "type" : "library",
-  "homepage" : "https://github.com/lansoweb/response-time",
-  "authors" : [ {
-    "name" : "Leandro Silva",
-    "homepage" : "http://leandrosilva.info/"
-  } ]
 }

@@ -21,4 +21,6 @@ The options are:
 
 ### Zend Expressive
 
-If you are using [expressive-skeleton](https://github.com/zendframework/zend-expressive-skeleton), you can copy `config/los-response-time.global.php.dist` to `config/autoload/los-response-time.global.php` and modify configuration as your needs.
+If you are using [expressive-skeleton](https://github.com/zendframework/zend-expressive-skeleton), 
+you can copy `config/los-response-time.global.php.dist` to 
+`config/autoload/los-response-time.global.php` and modify configuration as your needs.
