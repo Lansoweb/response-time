@@ -1,7 +1,9 @@
 <?php
 return [
-    'los_response_time' => [
-        'header_name' => LosMiddleware\ResponseTime\ResponseTime::HEADER_NAME,
+    'los' => [
+        'response_time' => [
+            'header_name' => LosMiddleware\ResponseTime\ResponseTime::HEADER_NAME,
+        ],
     ],
     'dependencies' => [
         'factories' => [
