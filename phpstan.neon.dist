@@ -1,0 +1,11 @@
+parameters:
+    level: max
+    tmpDir: ./build/cache/phpstan
+    checkMissingIterableValueType: false
+    paths:
+        - ./src
+    ignoreErrors:
+        - '#Default value of the parameter \#1 \$options#'
+        - '#Offset .header_name. on array#'
+includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
