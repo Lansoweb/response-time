@@ -1,28 +1,36 @@
 {
-    "name" : "los/response-time",
-    "description" : "PHP middleware to add a Response Time header",
-    "require" : {
-        "php" : "^8.1",
-        "psr/http-message" : "^1.0 || ^2.0",
-        "psr/http-server-middleware": "^1.0",
-        "psr/container": "^1.0 || ^2.0"
-    },
-    "license" : "MIT",
-    "autoload" : {
-        "psr-4" : {
-            "Los\\ResponseTime\\" : "src/"
+    "name": "los/response-time",
+    "description": "PHP middleware to add a Response Time header",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Leandro Silva",
+            "homepage": "https://sillotec.com/"
         }
+    ],
+    "homepage": "https://github.com/lansoweb/response-time",
+    "require": {
+        "php": "^8.1",
+        "psr/container": "^1.0 || ^2.0",
+        "psr/http-message": "^1.0 || ^2.0",
+        "psr/http-server-middleware": "^1.0"
     },
-    "type" : "library",
-    "homepage" : "https://github.com/lansoweb/response-time",
-    "authors" : [ {
-        "name" : "Leandro Silva",
-        "homepage" : "https://sillotec.com/"
-    } ],
     "require-dev": {
         "laminas/laminas-coding-standard": "^2.5",
-        "squizlabs/php_codesniffer": "^3.5",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Los\\ResponseTime\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
     },
     "scripts": {
         "check": [
@@ -31,12 +39,6 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "phpstan": "phpstan analyse",
-        "psalm": "psalm"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
+        "phpstan": "phpstan analyse"
     }
 }
