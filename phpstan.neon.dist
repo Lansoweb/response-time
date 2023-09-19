@@ -4,4 +4,7 @@ parameters:
     checkMissingIterableValueType: false
     paths:
         - ./src
-        - ./tests
+    ignoreErrors:
+        - '#Cannot access offset .+ on mixed#'
+includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon

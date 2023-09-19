@@ -31,7 +31,8 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "phpstan": "phpstan analyse -l 4 src"
+        "phpstan": "phpstan analyse",
+        "psalm": "psalm"
     },
     "config": {
         "allow-plugins": {

@@ -26,12 +26,14 @@ final class ResponseTime implements MiddlewareInterface
         $server = $request->getServerParams();
 
         if (! array_key_exists('REQUEST_TIME_FLOAT', $server)) {
-            $server['REQUEST_TIME_FLOAT'] = microtime(true);
+            $requestTime = microtime(true);
+        } else {
+            $requestTime = (float) $server['REQUEST_TIME_FLOAT'];
         }
 
         $response = $handler->handle($request);
 
-        $time = (microtime(true) - $server['REQUEST_TIME_FLOAT']) * 1000;
+        $time = (microtime(true) - $requestTime) * 1000;
 
         return $response->withHeader($this->options->headerName(), sprintf('%2.2fms', $time));
     }
