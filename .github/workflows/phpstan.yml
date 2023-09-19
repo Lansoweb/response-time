@@ -1,11 +1,11 @@
-name: "Static Analysis by Psalm"
+name: "Static Analysis by phpstan"
 
 on:
   pull_request:
 
 jobs:
   static-analysis-psalm:
-    name: "Static Analysis by Psalm"
+    name: "Static Analysis by phpstan"
 
     runs-on: ${{ matrix.operating-system }}
 
