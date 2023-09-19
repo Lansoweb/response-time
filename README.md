@@ -19,8 +19,8 @@ X-Request-Time: 49,96ms
 The options are:
 * header_name: Header name. Default: X-Response-Time 
 
-### Zend Expressive
+### Laminas
 
-If you are using [expressive-skeleton](https://github.com/zendframework/zend-expressive-skeleton), 
+If you are using [Laminas](https://github.com/laminas/laminas-skeleton), 
 you can copy `config/los-response-time.global.php.dist` to 
 `config/autoload/los-response-time.global.php` and modify configuration as your needs.

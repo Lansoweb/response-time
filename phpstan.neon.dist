@@ -1,0 +1,7 @@
+parameters:
+    level: max
+    tmpDir: ./build/cache/phpstan
+    checkMissingIterableValueType: false
+    paths:
+        - ./src
+        - ./tests

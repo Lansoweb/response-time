@@ -1,38 +1,26 @@
 <?php
-namespace LosMiddleware\ResponseTime;
+
+declare(strict_types=1);
+
+namespace Los\ResponseTime;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_key_exists;
+use function microtime;
+use function sprintf;
+
 final class ResponseTime implements MiddlewareInterface
 {
+    public const HEADER_NAME = 'X-Response-Time';
 
-    const HEADER_NAME = 'X-Response-Time';
-
-    /**
-     *
-     * @var array
-     */
-    private $options;
-
-    /**
-     * ResponseTime constructor.
-     * @param array $options
-     */
-    public function __construct($options = [])
+    public function __construct(private readonly Options $options)
     {
-        $this->options = array_merge([
-            'header_name' => self::HEADER_NAME
-        ], $options);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $server = $request->getServerParams();
@@ -45,6 +33,6 @@ final class ResponseTime implements MiddlewareInterface
 
         $time = (microtime(true) - $server['REQUEST_TIME_FLOAT']) * 1000;
 
-        return $response->withHeader(self::HEADER_NAME, sprintf('%2.2fms', $time));
+        return $response->withHeader($this->options->headerName(), sprintf('%2.2fms', $time));
     }
 }
