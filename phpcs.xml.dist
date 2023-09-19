@@ -12,7 +12,7 @@
     <!-- Source and tests must follow the coding standard. -->
     <file>./src</file>
 
-    <rule ref="Doctrine">
+    <rule ref="LaminasCodingStandard">
         <properties>
             <property name="lineLimit" value="160"/>
             <property name="absoluteLineLimit" value="180"/>

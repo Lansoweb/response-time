@@ -1,37 +1,36 @@
 {
     "name": "los/response-time",
-    "type": "library",
     "description": "PHP middleware to add a Response Time header",
-    "homepage": "https://github.com/lansoweb/response-time",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Leandro Silva",
-            "homepage": "http://leandrosilva.info/"
+            "homepage": "https://sillotec.com/"
         }
     ],
+    "homepage": "https://github.com/lansoweb/response-time",
     "require": {
-        "php": ">= 7.4",
+        "php": "^8.1",
         "psr/container": "^1.0 || ^2.0",
-        "psr/http-message": "^1.0",
-        "psr/http-server-handler": "^1.0",
+        "psr/http-message": "^1.0 || ^2.0",
         "psr/http-server-middleware": "^1.0"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^9.0",
-        "phpstan/phpstan": "^0.12.85",
-        "squizlabs/php_codesniffer": "^3.6",
-        "vimeo/psalm": "^4.7"
+        "laminas/laminas-coding-standard": "^2.5",
+        "phpstan/phpstan": "^1.10",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
         "psr-4": {
-            "LosMiddleware\\ResponseTime\\": "src/"
+            "Los\\ResponseTime\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "LosMiddleware\\ResponseTimeTest\\": "test/"
-        }
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
     },
     "scripts": {
         "check": [
@@ -40,7 +39,6 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "phpstan": "phpstan analyse",
-        "psalm": "psalm"
+        "phpstan": "phpstan analyse"
     }
 }
